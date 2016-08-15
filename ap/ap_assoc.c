@@ -184,7 +184,7 @@ static USHORT update_associated_mac_entry(
 		pEntry->PortSecured = WPA_802_1X_PORT_SECURED;
 
 #ifdef SOFT_ENCRYPT
-	/* There are some situation to need to encryption by software 			   
+	/* There are some situation to need to encryption by software 			  
 	   1. The Client support PMF. It shall ony support AES cipher.
 	   2. The Client support WAPI.
 	   If use RT3883 or later, HW can handle the above.
@@ -200,7 +200,7 @@ static USHORT update_associated_mac_entry(
 #endif /* SOFT_ENCRYPT */
 
 #ifdef DOT11_N_SUPPORT
-	/* 
+	/*
 		WFA recommend to restrict the encryption type in 11n-HT mode.
 	 	So, the WEP and TKIP are not allowed in HT rate.
 	*/
@@ -769,7 +769,7 @@ VOID ap_cmm_peer_assoc_req_action(
     {
 		/* clear GTK state */
 		pEntry->GTKState = REKEY_NEGOTIATING;
-    
+   
 		NdisZeroMemory(&pEntry->PairwiseKey, sizeof(CIPHER_KEY));
 
 		/* clear this entry as no-security mode */
@@ -1259,7 +1259,7 @@ SendAssocResponse:
 
 		/* send wireless event - for association */
 		RTMPSendWirelessEvent(pAd, IW_ASSOC_EVENT_FLAG, pEntry->Addr, 0, 0);
-    
+   
 		/* This is a reassociation procedure */
 		pEntry->IsReassocSta = isReassoc;
 
