@@ -1240,14 +1240,14 @@ VOID CFG80211_LostP2pGoInform(VOID *pAdCB)
 	if ((pAd->cfg80211_ctrl.Cfg80211VifDevSet.vifDevList.size > 0) &&
 	((pNetDev = RTMP_CFG80211_FindVifEntry_ByType(pAd, RT_CMD_80211_IFTYPE_P2P_CLIENT)) != NULL))
 	{
-	        if (pNetDev->ieee80211_ptr->sme_state == CFG80211_SME_CONNECTING)
+	        if (p80211CB->sme_state == SME_CONNECTING)
        	 	{
                    cfg80211_connect_result(pNetDev, NULL, NULL, 0, NULL, 0,
                                                                    WLAN_STATUS_UNSPECIFIED_FAILURE, GFP_KERNEL);
         	}
-        	else if (pNetDev->ieee80211_ptr->sme_state == CFG80211_SME_CONNECTED)
+        	else if (p80211CB->sme_state == SME_CONNECTED)
         	{
-                   cfg80211_disconnected(pNetDev, 0, NULL, 0, GFP_KERNEL);
+                   cfg80211_disconnected(pNetDev, 0, NULL, true, 0, GFP_KERNEL);
         	}
 	}
 	else

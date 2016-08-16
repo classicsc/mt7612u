@@ -730,7 +730,7 @@ VOID RTMP_CFG80211_VirtualIF_Remove(
 			wdev = &pAd->ApCfg.ApCliTab[MAIN_MBSSID].wdev;
 
 			OPSTATUS_CLEAR_FLAG(pAd, fOP_AP_STATUS_MEDIA_STATE_CONNECTED);
-			cfg80211_disconnected(dev_p, 0, NULL, 0, GFP_KERNEL);
+			cfg80211_disconnected(dev_p, 0, NULL, 0, true, GFP_KERNEL);
 
 			NdisZeroMemory(pAd->ApCfg.ApCliTab[MAIN_MBSSID].CfgApCliBssid, MAC_ADDR_LEN);
 			RtmpOSNetDevDetach(dev_p);

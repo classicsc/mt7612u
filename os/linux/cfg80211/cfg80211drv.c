@@ -155,7 +155,7 @@ INT CFG80211DRV_IoctlHandle(
 			break;
 
 		case CMD_RTPRIV_IOCTL_80211_REMAIN_ON_CHAN_SET:
-			CFG80211DRV_OpsRemainOnChannel(pAd, pData, Data);			
+			CFG80211DRV_OpsRemainOnChannel(pAd, pData, Data);
 			break;
 
 		case CMD_RTPRIV_IOCTL_80211_CANCEL_REMAIN_ON_CHAN_SET:
@@ -1634,7 +1634,7 @@ BOOLEAN CFG80211_checkScanResInKernelCache(
                                WLAN_CAPABILITY_ESS, WLAN_CAPABILITY_ESS);
 	if (bss)
         {
-                cfg80211_put_bss(bss);
+                cfg80211_put_bss(pWiphy, bss);
                 return TRUE;
         }
 
@@ -1679,8 +1679,11 @@ BOOLEAN CFG80211_checkScanTable(
 	if (bss)
 	{
 		DBGPRINT(RT_DEBUG_TRACE, ("Found %s in Kernel_ScanTable with CH[%d]\n", pApCliEntry->MlmeAux.Ssid, bss->channel->center_freq));
+#if 0
 		bss->tsf = timestamp;
-		cfg80211_put_bss(bss);
+#endif
+
+		cfg80211_put_bss(pWiphy, bss);
 		return TRUE;
 	}
 	else
@@ -1723,7 +1726,7 @@ BOOLEAN CFG80211_checkScanTable(
 		NdisCopyMemory(ie + 2 + pApCliEntry->MlmeAux.SsidLen, pBssEntry->pVarIeFromProbRsp,
 				pBssEntry->VarIeFromProbeRspLen);
 
-		bss = cfg80211_inform_bss(pWiphy, chan,
+		bss = cfg80211_inform_bss(pWiphy, chan, CFG80211_BSS_FTYPE_UNKNOWN,
 					  pApCliEntry->MlmeAux.Bssid, timestamp, WLAN_CAPABILITY_ESS, pApCliEntry->MlmeAux.BeaconPeriod,
 					  ie, ieLen,
 #ifdef CFG80211_SCAN_SIGNAL_AVG
@@ -1739,7 +1742,7 @@ BOOLEAN CFG80211_checkScanTable(
 					PRINT_MAC(pApCliEntry->MlmeAux.Bssid),bss->channel->center_freq, pBssEntry->Channel,
 					pApCliEntry->MlmeAux.BeaconPeriod, pBssEntry->VarIeFromProbeRspLen);
 
-			cfg80211_put_bss(bss);
+			cfg80211_put_bss(pWiphy, bss);
 			isOk = TRUE;
 		}
 
