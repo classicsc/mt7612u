@@ -6,3 +6,7 @@ Module.symvers
 modules.order
 .tmp_versions
 tools/bin2h
+include/eeprom/mt76x2_e2p.h
+include/mcu/mt7662_firmware.h
+include/mcu/mt7662_rom_patch.h
+
