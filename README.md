@@ -5,6 +5,7 @@ STA, AP and Monitor Modes are possible
 
 This driver is **currently** under **heavy** development.  
 cfg80211 is in testing for STA mode
+BUG in notify code, will crash kernel
 
 Tested on X86_64 platform(s) **only**,  
 cross compile possible, but not fully tested.  
@@ -26,9 +27,12 @@ They are <u>plenty</u> information around the web.
 
 **BUGS**  
 - can't unload driver, must disconnect device(s) first  
+- bug in cfg80211 notify code  
+- missing led support, need code from mt7610u driver  
   
 
 **TODO**, in order of no appearance ;-)  
+- add led support
 - remove stupid AP/STA switch  
 - fix unloading driver  
 - do more function typesafe  
