@@ -25,6 +25,13 @@ install the kernel sources and build an external module.
 Questions about this will **silently** ignored !  
 They are <u>plenty</u> information around the web.  
 
+**NOTES**  
+The original driver is a mess and **PITA**  
+Both mt7610u and mt7612u <u>can</u> work with the  
+same driver.  
+Code which is missing in one driver, may found in the other driver.  
+i.e STA, AP, RSSI, LED handling stuff  
+
 **BUGS**  
 - can't unload driver, must disconnect device(s) first  
 - bug in cfg80211 notify code  
