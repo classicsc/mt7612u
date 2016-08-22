@@ -706,7 +706,7 @@ endif
 ## End of MT7650U ##
 
 # MT7662U
-ifneq ($(or $(findstring mt7662u,$(CHIPSET)),$(findstring mt7662u,$(CHIPSET))),)
+ifneq ($(or $(findstring mt7662u,$(CHIPSET)),$(findstring mt7612u,$(CHIPSET))),)
 WFLAGS += -DMT76x2 -DRT65xx -DRLT_MAC -DRLT_BBP -DMT_RF -DRTMP_MAC_USB -DRTMP_USB_SUPPORT -DRTMP_TIMER_TASK_SUPPORT -DA_BAND_SUPPORT -DRTMP_EFUSE_SUPPORT -DNEW_MBSSID_MODE -DCONFIG_ANDES_SUPPORT -DRTMP_RF_RW_SUPPORT -DDYNAMIC_VGA_SUPPORT
 HAS_NEW_RATE_ADAPT_SUPPORT=y
 ifeq ($(HAS_NEW_RATE_ADAPT_SUPPORT),y)
@@ -1314,6 +1314,7 @@ clean:
 	rm -f */*/*/*.{o,ko,mod.{o,c}}
 	rm -f */*/*/.*.{cmd,flags,d}
 	rm -fr .tmp_versions
+	rm -f include/mcu/mt76*
 #Must clean Module.symvers; or you will suffer symbol version not match
 #when OS_ABL = YES.
 	rm -f Module.symvers
