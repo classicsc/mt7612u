@@ -1322,6 +1322,9 @@ clean:
 	rm -f Module.markers
 	rm -f modules.order
 
+installfw:
+	cp -n firmware/* /lib/firmware
+
 help:
 	@echo "options :"
 	@echo "modules		build this module"
