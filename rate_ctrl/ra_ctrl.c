@@ -1060,24 +1060,6 @@ VOID asic_mcs_lut_update(RTMP_ADAPTER *pAd, MAC_TABLE_ENTRY *pEntry)
 		}
 		else
 #endif /* RLT_MAC */
-#ifdef RTMP_MAC
-		if (pAd->chipCap.hif_type == HIF_RTMP)
-		{
-			rate_ctrl.RATE_CTRL_O.PHYMODE = pEntry->HTPhyMode.field.MODE;
-			rate_ctrl.RATE_CTRL_O.STBC = pEntry->HTPhyMode.field.STBC;
-			rate_ctrl.RATE_CTRL_O.ShortGI = pEntry->HTPhyMode.field.ShortGI;
-			rate_ctrl.RATE_CTRL_O.BW = pEntry->HTPhyMode.field.BW;
-			rate_ctrl.RATE_CTRL_O.MCS = pEntry->HTPhyMode.field.MCS;
-#ifdef TXBF_SUPPORT
-			rate_ctrl.RATE_CTRL_O.eTxBF = pEntry->HTPhyMode.field.eTxBF;
-			rate_ctrl.RATE_CTRL_O.iTxBF = pEntry->HTPhyMode.field.iTxBF;
-
-			if (pEntry->HTPhyMode.field.eTxBF || pEntry->HTPhyMode.field.iTxBF)
-				rate_ctrl.RATE_CTRL_O.STBC = FALSE;
-#endif /* TXBF_SUPPORT */
-		}
-		else
-#endif /* RTMP_MAC */
 		{
 			DBGPRINT(RT_DEBUG_ERROR, ("\x1b[31m%s: HIF Type Error !!!\x1b[m\n", __FUNCTION__));
 			return;

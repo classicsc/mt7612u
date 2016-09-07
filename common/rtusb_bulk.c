@@ -376,15 +376,6 @@ VOID RTUSBBulkOutDataPacket(RTMP_ADAPTER *pAd, UCHAR BulkOutPipeId, UCHAR Index)
 		}
 #endif /* RLT_MAC */
 
-#ifdef RTMP_MAC
-		if (pAd->chipCap.hif_type == HIF_RTMP) {
-			ampdu = pTxWI->TXWI_O.AMPDU;
-			phy_mode = pTxWI->TXWI_O.PHYMODE;
-			pid = pTxWI->TXWI_O.PacketId;
-			txwi_pkt_len = pTxWI->TXWI_O.MPDUtotalByteCnt;
-		}
-#endif /* RTMP_MAC */
-
 		if (pAd->bForcePrintTX == TRUE)
 			DBGPRINT(RT_DEBUG_TRACE, ("RTUSBBulkOutDataPacket AMPDU = %d.\n",   ampdu));
 
