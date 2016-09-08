@@ -94,7 +94,6 @@ VOID MBSS_Init(RTMP_ADAPTER *pAd, RTMP_OS_NETDEV_OP_HOOK *pNetDevOps)
 	{
 		struct wifi_dev *wdev;
 		UINT32 MC_RowID = 0, IoctlIF = 0;
-		char *dev_name;
 #ifdef MULTIPLE_CARD_SUPPORT
 		MC_RowID = pAd->MC_RowID;
 #endif /* MULTIPLE_CARD_SUPPORT */
@@ -102,8 +101,8 @@ VOID MBSS_Init(RTMP_ADAPTER *pAd, RTMP_OS_NETDEV_OP_HOOK *pNetDevOps)
 		IoctlIF = pAd->IoctlIF;
 #endif /* HOSTAPD_SUPPORT */
 
-		dev_name = get_dev_name_prefix(pAd, INT_MBSSID);
-		pDevNew = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, INT_MBSSID, IdBss, sizeof(struct mt_dev_priv), dev_name);
+		pDevNew = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, INT_MBSSID,
+					     IdBss, sizeof(struct mt_dev_priv), "wlan");
 #ifdef HOSTAPD_SUPPORT
 		pAd->IoctlIF = IoctlIF;
 #endif /* HOSTAPD_SUPPORT */

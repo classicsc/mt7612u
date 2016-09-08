@@ -2363,7 +2363,6 @@ VOID APCli_Init(RTMP_ADAPTER *pAd, RTMP_OS_NETDEV_OP_HOOK *pNetDevOps)
 	for (idx = 0; idx < MAX_APCLI_NUM; idx++)
 	{
 		UINT32 MC_RowID = 0, IoctlIF = 0;
-		char *dev_name;
 
 #ifdef MULTIPLE_CARD_SUPPORT
 		MC_RowID = pAd->MC_RowID;
@@ -2372,9 +2371,8 @@ VOID APCli_Init(RTMP_ADAPTER *pAd, RTMP_OS_NETDEV_OP_HOOK *pNetDevOps)
 		IoctlIF = pAd->IoctlIF;
 #endif /* HOSTAPD_SUPPORT */
 
-	dev_name = get_dev_name_prefix(pAd, INT_APCLI);
 		new_dev_p = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, INT_APCLI, idx,
-									sizeof(struct mt_dev_priv), dev_name);
+						sizeof(struct mt_dev_priv), "wlan");
 		if (!new_dev_p) {
 			DBGPRINT(RT_DEBUG_ERROR, ("%s(): Create net_device for %s(%d) fail!\n",
 						__FUNCTION__, dev_name, idx));

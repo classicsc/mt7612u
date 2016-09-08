@@ -597,7 +597,8 @@ VOID RTMP_CFG80211_VirtualIF_Init(
 	//netDevHook.iw_handler = (void *)&rt28xx_ap_iw_handler_def;
 #endif /* WIRELESS_EXT >= 12 */
 
-	new_dev_p = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, Inf, preIfIndex, sizeof(PRTMP_ADAPTER), preIfName);
+	new_dev_p = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, Inf,
+				       preIfIndex, sizeof(PRTMP_ADAPTER), "wlan");
 
 	if (new_dev_p == NULL)
 	{
@@ -893,7 +894,8 @@ VOID RTMP_CFG80211_DummyP2pIf_Init(
 	netDevHook.xmit = CFG80211_DummyP2pIf_PacketSend;    /* hard transmit hook point */
 	netDevHook.ioctl = CFG80211_DummyP2pIf_Ioctl;	     /* ioctl hook point */
 
-	new_dev_p = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, Inf, preIfIndex, sizeof(PRTMP_ADAPTER), INF_CFG80211_DUMMY_P2P_NAME);
+	new_dev_p = RtmpOSNetDevCreate(MC_RowID, &IoctlIF, Inf,
+				       preIfIndex, sizeof(PRTMP_ADAPTER), "wlan");
 
 	if (new_dev_p == NULL)
 	{

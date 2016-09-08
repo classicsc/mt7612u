@@ -1065,7 +1065,6 @@ PNET_DEV RtmpPhyNetDevMainCreate(VOID *pAdSrc)
 	RTMP_ADAPTER *pAd = (RTMP_ADAPTER *)pAdSrc;
 	PNET_DEV pDevNew;
 	UINT32 MC_RowID = 0, IoctlIF = 0;
-	char *dev_name;
 
 #ifdef MULTIPLE_CARD_SUPPORT
 	MC_RowID = pAd->MC_RowID;
@@ -1074,9 +1073,8 @@ PNET_DEV RtmpPhyNetDevMainCreate(VOID *pAdSrc)
 	IoctlIF = pAd->IoctlIF;
 #endif /* HOSTAPD_SUPPORT */
 
-	dev_name = get_dev_name_prefix(pAd, INT_MAIN);
-	pDevNew = RtmpOSNetDevCreate((INT32)MC_RowID, (UINT32 *)&IoctlIF,
-					INT_MAIN, 0, sizeof(struct mt_dev_priv), dev_name);
+	pDevNew = RtmpOSNetDevCreate(MC_RowID, &IoctlIF,
+					INT_MAIN, 0, sizeof(struct mt_dev_priv), "wlan");
 
 #ifdef HOSTAPD_SUPPORT
 	pAd->IoctlIF = IoctlIF;
