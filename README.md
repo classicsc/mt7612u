@@ -38,7 +38,8 @@ i.e STA, AP, RSSI, LED handling stuff
 - missing led support, need code from mt7610u driver  
   
 
-**TODO**, in order of no appearance ;-)  
+**TODO**, in order of no appearance ;-)
+- fix the kernel crash  
 - add led support
 - remove stupid AP/STA switch  
 - fix unloading driver  
