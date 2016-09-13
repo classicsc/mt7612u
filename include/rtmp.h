@@ -8099,7 +8099,7 @@ VOID MaintainBssTable(
 	IN  UCHAR	MaxSameRxTimeCount);
 #endif /* CONFIG_STA_SUPPORT */
 
-void  getRate(HTTRANSMIT_SETTING HTSetting, ULONG* fLastTxRxRate);
+void  getRate(HTTRANSMIT_SETTING HTSetting, UINT32* fLastTxRxRate);
 
 
 #ifdef APCLI_SUPPORT

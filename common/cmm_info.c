@@ -5163,7 +5163,7 @@ INT Show_MacTable_Proc(RTMP_ADAPTER *pAd, PSTRING arg)
 {
 	INT i;
     	UINT32 RegValue;
-	ULONG DataRate=0;
+	UINT32 DataRate=0;
 
 
 	printk("\n");
@@ -5260,7 +5260,7 @@ INT Show_MacTable_Proc(RTMP_ADAPTER *pAd, PSTRING arg)
 INT show_stainfo_proc(RTMP_ADAPTER *pAd, PSTRING arg)
 {
 	INT i;
-	ULONG DataRate=0;
+	UINT32 DataRate=0;
 	UCHAR mac_addr[MAC_ADDR_LEN];
 	PSTRING token;
 	CHAR sep[1] = {':'};
@@ -5624,7 +5624,7 @@ INT	Show_ModuleTxpower_Proc(
 }
 #endif/*APCLI_SUPPORT*/
 
-void  getRate(HTTRANSMIT_SETTING HTSetting, ULONG* fLastTxRxRate)
+void  getRate(HTTRANSMIT_SETTING HTSetting, UINT32* fLastTxRxRate)
 
 {
 	VOID *pAd = NULL;
@@ -8089,7 +8089,7 @@ INT Show_Diag_Proc(RTMP_ADAPTER *pAd, PSTRING arg)
 	UCHAR vht_mcs_max_idx = MAX_VHT_MCS_SET;
 #endif /* DOT11_VHT_AC */
 
-	os_alloc_mem(pAd, &pDiag, sizeof(RtmpDiagStruct));
+	os_alloc_mem(pAd, (UCHAR **)&pDiag, sizeof(RtmpDiagStruct));
 	if (!pDiag) {
 		DBGPRINT(RT_DEBUG_ERROR, ("%s():AllocMem failed!\n", __FUNCTION__));
 		return FALSE;

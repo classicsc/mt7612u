@@ -3845,12 +3845,13 @@ INT Set_ATE_Load_E2P_From_Buf_Proc(
 {
 	BOOLEAN		    	ret = FALSE;
 	UINT32 			value = (UINT32) simple_strtol(arg, 0, 10);
+	USHORT 			WriteEEPROM[(EEPROM_SIZE >> 1)];
 
 	DBGPRINT(RT_DEBUG_OFF, ("===> %s (value=%d)\n\n", __FUNCTION__, value));
 
 	if (value > 0)
 	{
-		rt_ee_write_all(pAd, pAd->EEPROMImage);
+		rt_ee_write_all(pAd, WriteEEPROM);
 		ret = TRUE;
 
 	}

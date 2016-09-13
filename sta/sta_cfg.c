@@ -3327,11 +3327,11 @@ INT RTMPQueryInformation(
     NDIS_802_11_AUTHENTICATION_MODE AuthMode;
     NDIS_802_11_WEP_STATUS WepStatus;
     NDIS_MEDIA_STATE MediaState;
-    ULONG BssBufSize, ulInfo=0, NetworkTypeList[4], apsd = 0, RateValue=0;
+    ULONG BssBufSize, ulInfo=0, NetworkTypeList[4], apsd = 0; 
     USHORT BssLen = 0;
     PUCHAR pBuf = NULL, pPtr;
     INT Status = NDIS_STATUS_SUCCESS;
-    UINT we_version_compiled;
+    UINT we_version_compiled, RateValue=0;
     UCHAR i, Padding = 0;
     BOOLEAN RadioState;
     STRING driverVersion[8];

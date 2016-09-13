@@ -2196,7 +2196,7 @@ INT ITxBFPhaseCalibration(
 	LONG   avgIData, avgQData;
 	UCHAR  peakI[3];
 	UCHAR  i;
-	INT    divPhase[2] = {0};
+	UCHAR  divPhase[2] = {0};
 	INT    phaseValues[2] = {0};
 	BOOLEAN gBandFlg = FALSE;
 
