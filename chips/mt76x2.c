@@ -1624,6 +1624,7 @@ int mt76x2_get_rx_high_gain(RTMP_ADAPTER *ad)
 		else
 			cap->rf1_5g_grp5_rx_high_gain = -((value & RF1_5G_GRP5_RX_HIGH_GAIN_MASK) >> 12);
 	}
+	return 0;
 }
 
 static int mt76x2_get_tx_pwr_info(RTMP_ADAPTER *ad)
@@ -2330,6 +2331,8 @@ static int mt76x2_get_tx_pwr_info(RTMP_ADAPTER *ad)
 	/* check PA type combination */
 	RT28xx_EEPROM_READ16(ad, EEPROM_NIC1_OFFSET, value);
 	cap->PAType= GET_PA_TYPE(value);
+
+	return 0;
 }
 
 static u8 mt76x2_txpwr_chlist[] = {
@@ -2415,6 +2418,7 @@ static INT rf_tr_agc_config(RTMP_ADAPTER *pAd, INT rf_bw)
 	signed char rx_agc_fc_offset[3] = {2,2,2}; /* array idx 0: 20M, 1:40M, 2:80m */
 	UINT8 tx_agc_fc_offset[3] = {0,0,0}; /* array idx 0: 20M, 1:40M, 2:80m */
 	CHAR rf32_val, rf31_val, rf_diff;
+	return 0;
 }
 
 void mt76x2_get_tx_pwr_per_rate(RTMP_ADAPTER *ad)
