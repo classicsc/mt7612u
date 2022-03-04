@@ -14,6 +14,8 @@ For compiling type
 `make`  
 in source dir  
 
+* NOTE: For some ARM 64-bit system, add argument `ARCH=arm64` if the above command doesn't work
+
 For install the driver use  
 `sudo insmod mt7612u.ko`  
 
